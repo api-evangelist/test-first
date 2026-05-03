@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/test-first/refs/heads/main/json-schema/test-first-specification-schema.json",
+  "title": "TestFirstSpecification",
+  "description": "A test-first specification document that defines expected behavior before implementation, serving as both a test and a specification.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the specification."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the specification."
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the behavior being specified."
+    },
+    "format": {
+      "type": "string",
+      "enum": ["gherkin", "openapi", "json-schema", "pact", "junit", "rspec", "jasmine"],
+      "description": "The format used to express the specification."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the specification."
+    },
+    "component": {
+      "type": "string",
+      "description": "The software component or API this specification covers."
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Scenario"
+      },
+      "description": "Individual test scenarios defined in this specification."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"],
+      "description": "Lifecycle status of the specification."
+    },
+    "author": {
+      "type": "string",
+      "description": "Author of the specification."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the specification was created."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for filtering and organizing specifications."
+    }
+  },
+  "required": ["id", "title", "format", "status"],
+  "$defs": {
+    "Scenario": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the scenario."
+        },
+        "given": {
+          "type": "string",
+          "description": "Precondition or initial context for the scenario."
+        },
+        "when": {
+          "type": "string",
+          "description": "The action or event that triggers the behavior."
+        },
+        "then": {
+          "type": "string",
+          "description": "The expected outcome or result."
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags applied to this scenario."
+        }
+      },
+      "required": ["name", "then"]
+    }
+  }
+}

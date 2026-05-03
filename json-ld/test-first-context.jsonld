@@ -1,0 +1,152 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "testfirst": "https://api-evangelist.github.io/test-first/schema/",
+    "TestFirstContract": "testfirst:TestFirstContract",
+    "MockServer": "testfirst:MockServer",
+    "TestFirstSpecification": "testfirst:TestFirstSpecification",
+    "author": {
+      "@id": "testfirst:author",
+      "@type": "xsd:string"
+    },
+    "baseUrl": {
+      "@id": "testfirst:base_url",
+      "@type": "@id"
+    },
+    "body": {
+      "@id": "testfirst:body"
+    },
+    "component": {
+      "@id": "testfirst:component",
+      "@type": "xsd:string"
+    },
+    "consumer": {
+      "@id": "testfirst:consumer",
+      "@type": "xsd:string"
+    },
+    "contentType": {
+      "@id": "testfirst:content_type",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "testfirst:created",
+      "@type": "xsd:dateTime"
+    },
+    "createdAt": {
+      "@id": "schema:dateCreated"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "dynamic": {
+      "@id": "testfirst:dynamic",
+      "@type": "xsd:boolean"
+    },
+    "format": {
+      "@id": "testfirst:format",
+      "@type": "xsd:string"
+    },
+    "given": {
+      "@id": "testfirst:given",
+      "@type": "xsd:string"
+    },
+    "headers": {
+      "@id": "testfirst:headers",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "dcterms:identifier"
+    },
+    "interactions": {
+      "@id": "testfirst:interactions",
+      "@container": "@set"
+    },
+    "metadata": {
+      "@id": "testfirst:metadata",
+      "@type": "@id"
+    },
+    "method": {
+      "@id": "testfirst:method",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "pactSpecification": {
+      "@id": "testfirst:pact_specification",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "testfirst:path",
+      "@type": "xsd:string"
+    },
+    "provider": {
+      "@id": "testfirst:provider",
+      "@type": "xsd:string"
+    },
+    "providerState": {
+      "@id": "testfirst:provider_state",
+      "@type": "xsd:string"
+    },
+    "proxyEnabled": {
+      "@id": "testfirst:proxy_enabled",
+      "@type": "xsd:boolean"
+    },
+    "request": {
+      "@id": "testfirst:request"
+    },
+    "response": {
+      "@id": "testfirst:response"
+    },
+    "responseBody": {
+      "@id": "testfirst:response_body"
+    },
+    "routes": {
+      "@id": "testfirst:routes",
+      "@container": "@set"
+    },
+    "scenarios": {
+      "@id": "testfirst:scenarios",
+      "@container": "@set"
+    },
+    "specFormat": {
+      "@id": "testfirst:spec_format",
+      "@type": "xsd:string"
+    },
+    "specSource": {
+      "@id": "testfirst:spec_source",
+      "@type": "@id"
+    },
+    "status": {
+      "@id": "testfirst:status",
+      "@type": "xsd:integer"
+    },
+    "statusCode": {
+      "@id": "testfirst:status_code",
+      "@type": "xsd:integer"
+    },
+    "tags": {
+      "@id": "testfirst:tags",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "then": {
+      "@id": "testfirst:then",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "testfirst:title",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version"
+    },
+    "when": {
+      "@id": "testfirst:when",
+      "@type": "xsd:string"
+    }
+  }
+}

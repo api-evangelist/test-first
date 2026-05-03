@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/test-first/refs/heads/main/json-schema/test-first-contract-schema.json",
+  "title": "TestFirstContract",
+  "description": "A consumer-driven API contract expressing what the consumer expects the API to provide, written before the provider implements it.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the contract."
+    },
+    "consumer": {
+      "type": "string",
+      "description": "Name of the API consumer that authored this contract."
+    },
+    "provider": {
+      "type": "string",
+      "description": "Name of the API provider that must satisfy this contract."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the contract."
+    },
+    "interactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Interaction"
+      },
+      "description": "List of expected request/response interactions."
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "pact_specification": {
+          "type": "string",
+          "description": "Pact specification version used."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the contract was created."
+        }
+      }
+    }
+  },
+  "required": ["id", "consumer", "provider", "interactions"],
+  "$defs": {
+    "Interaction": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description of the interaction."
+        },
+        "provider_state": {
+          "type": "string",
+          "description": "The state the provider must be in for this interaction."
+        },
+        "request": {
+          "$ref": "#/$defs/HttpRequest"
+        },
+        "response": {
+          "$ref": "#/$defs/HttpResponse"
+        }
+      },
+      "required": ["description", "request", "response"]
+    },
+    "HttpRequest": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+          "description": "HTTP method."
+        },
+        "path": {
+          "type": "string",
+          "description": "Request path."
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Request headers."
+        },
+        "body": {
+          "description": "Request body."
+        }
+      },
+      "required": ["method", "path"]
+    },
+    "HttpResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599,
+          "description": "Expected HTTP status code."
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Expected response headers."
+        },
+        "body": {
+          "description": "Expected response body."
+        }
+      },
+      "required": ["status"]
+    }
+  }
+}

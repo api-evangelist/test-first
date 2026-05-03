@@ -1,0 +1,13 @@
+{
+  "id": "sample-id",
+  "name": "Sample Name",
+  "base_url": "https://example.com/api/base-url/abc123",
+  "spec_source": "https://example.com/api/spec-source/abc123",
+  "spec_format": "openapi",
+  "routes": [
+    {}
+  ],
+  "dynamic": true,
+  "proxy_enabled": false,
+  "created_at": "2025-03-15T14:30:00Z"
+}

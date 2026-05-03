@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/test-first/refs/heads/main/json-structure/test-first-specification-structure.json",
+  "name": "TestFirstSpecification",
+  "description": "A test-first specification document that defines expected behavior before implementation, serving as both a test and a specification.",
+  "properties": {
+    "id": {
+      "description": "Unique identifier for the specification.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title of the specification.",
+      "type": "string"
+    },
+    "description": {
+      "description": "Detailed description of the behavior being specified.",
+      "type": "string"
+    },
+    "format": {
+      "enum": [
+        "gherkin",
+        "openapi",
+        "json-schema",
+        "pact",
+        "junit",
+        "rspec",
+        "jasmine"
+      ],
+      "description": "The format used to express the specification.",
+      "type": "string"
+    },
+    "version": {
+      "description": "Version of the specification.",
+      "type": "string"
+    },
+    "component": {
+      "description": "The software component or API this specification covers.",
+      "type": "string"
+    },
+    "scenarios": {
+      "items": {
+        "$ref": "#/definitions/Scenario"
+      },
+      "description": "Individual test scenarios defined in this specification.",
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ],
+      "description": "Lifecycle status of the specification.",
+      "type": "string"
+    },
+    "author": {
+      "description": "Author of the specification.",
+      "type": "string"
+    },
+    "created_at": {
+      "description": "ISO 8601 timestamp when the specification was created.",
+      "type": "datetime"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for filtering and organizing specifications.",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "format",
+    "status"
+  ],
+  "definitions": {
+    "Scenario": {
+      "properties": {
+        "name": {
+          "description": "Name of the scenario.",
+          "type": "string"
+        },
+        "given": {
+          "description": "Precondition or initial context for the scenario.",
+          "type": "string"
+        },
+        "when": {
+          "description": "The action or event that triggers the behavior.",
+          "type": "string"
+        },
+        "then": {
+          "description": "The expected outcome or result.",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags applied to this scenario.",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "then"
+      ],
+      "type": "object",
+      "name": "Scenario"
+    }
+  },
+  "type": "object"
+}

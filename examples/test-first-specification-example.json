@@ -1,0 +1,18 @@
+{
+  "id": "sample-id",
+  "title": "Sample Title",
+  "description": "This is a sample description.",
+  "format": "openapi",
+  "version": "1.2.3",
+  "component": "sample-component",
+  "scenarios": [
+    {}
+  ],
+  "status": "active",
+  "author": "sample-author",
+  "created_at": "2025-03-15T14:30:00Z",
+  "tags": [
+    "sample-tags-item",
+    "sample-tags-item"
+  ]
+}

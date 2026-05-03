@@ -1,0 +1,160 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Test First
+  description: Vocabulary and taxonomy for test-first development covering specifications, contracts, and mock servers created before implementation.
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  resources:
+    - name: specifications
+      description: Test-first specifications defining expected behavior before implementation.
+      actions: [create, read, update, delete, list, validate]
+    - name: contracts
+      description: Consumer-driven API contracts expressing what consumers expect from providers.
+      actions: [create, read, update, delete, list, verify]
+    - name: mock-servers
+      description: Mock server configurations generated from test-first specifications.
+      actions: [create, read, update, delete, list, start, stop]
+
+  actions:
+    - name: create
+      description: Create a new specification, contract, or mock server.
+      http_methods: [POST]
+      pattern: write
+    - name: read
+      description: Retrieve a specification, contract, or mock by identifier.
+      http_methods: [GET]
+      pattern: read
+    - name: update
+      description: Update a specification or contract.
+      http_methods: [PUT, PATCH]
+      pattern: write
+    - name: delete
+      description: Remove a specification, contract, or mock.
+      http_methods: [DELETE]
+      pattern: destructive
+    - name: list
+      description: List specifications, contracts, or mocks with filtering.
+      http_methods: [GET]
+      pattern: read
+    - name: validate
+      description: Validate a specification against a schema or standard.
+      http_methods: [POST]
+      pattern: read
+    - name: verify
+      description: Verify a provider implementation satisfies a consumer contract.
+      http_methods: [POST]
+      pattern: write
+    - name: start
+      description: Start a mock server.
+      http_methods: [POST]
+      pattern: write
+    - name: stop
+      description: Stop a running mock server.
+      http_methods: [POST]
+      pattern: destructive
+
+  schemas:
+    core:
+      - name: TestFirstSpecification
+        description: A test-first specification expressing expected behavior.
+        key_properties: [id, title, format, version, scenarios, status]
+      - name: TestFirstContract
+        description: Consumer-driven contract with request/response interactions.
+        key_properties: [id, consumer, provider, interactions]
+      - name: MockServer
+        description: Mock server generated from a test-first specification.
+        key_properties: [id, name, base_url, spec_source, spec_format, routes]
+
+  enums:
+    spec_format:
+      - gherkin
+      - openapi
+      - json-schema
+      - pact
+      - junit
+      - rspec
+      - jasmine
+    spec_status:
+      - draft
+      - active
+      - deprecated
+    http_method:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - HEAD
+      - OPTIONS
+
+  parameters:
+    identifiers:
+      - name: id
+        description: Unique identifier for the specification or contract.
+        type: string
+      - name: consumer
+        description: Name of the API consumer.
+        type: string
+      - name: provider
+        description: Name of the API provider.
+        type: string
+    filters:
+      - name: format
+        description: Filter specifications by format.
+        type: string
+      - name: status
+        description: Filter by lifecycle status.
+        type: string
+    pagination:
+      - name: limit
+        description: Maximum number of results per page.
+        type: integer
+      - name: offset
+        description: Number of results to skip.
+        type: integer
+
+  authentication:
+    schemes:
+      - type: bearer
+        description: Bearer token for contract broker and mock server APIs.
+
+capability:
+  workflows: []
+  personas:
+    - id: api-consumer
+      name: API Consumer
+      description: Developer consuming an API who writes contracts expressing their expectations.
+    - id: api-provider
+      name: API Provider
+      description: Developer implementing an API who must satisfy consumer contracts.
+    - id: api-designer
+      name: API Designer
+      description: Architect writing API specifications before implementation begins.
+  domains:
+    - name: Specification
+      description: Defining API behavior in machine-readable specifications before coding.
+    - name: Contract Testing
+      description: Verifying that API providers satisfy consumer-defined contracts.
+    - name: Mocking
+      description: Generating and running mock servers from specifications for parallel development.
+    - name: Validation
+      description: Checking specifications and implementations for conformance.
+  namespaces: []
+  binds: []
+
+crossReference:
+  - resource: specifications
+    operations: [create, read, update, delete, list, validate]
+    workflows: []
+    personas: [api-designer, api-consumer, api-provider]
+  - resource: contracts
+    operations: [create, read, update, delete, list, verify]
+    workflows: []
+    personas: [api-consumer, api-provider]
+  - resource: mock-servers
+    operations: [create, read, update, delete, list, start, stop]
+    workflows: []
+    personas: [api-consumer, api-designer]

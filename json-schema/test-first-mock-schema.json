@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/test-first/refs/heads/main/json-schema/test-first-mock-schema.json",
+  "title": "MockServer",
+  "description": "A mock server configuration derived from a test-first specification, enabling consumers to develop against an API before the provider implements it.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the mock server configuration."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the mock server."
+    },
+    "base_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Base URL where the mock server is running."
+    },
+    "spec_source": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the OpenAPI or other specification used to generate the mock."
+    },
+    "spec_format": {
+      "type": "string",
+      "enum": ["openapi", "postman", "pact", "raml", "api-blueprint"],
+      "description": "Format of the specification backing the mock."
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MockRoute"
+      },
+      "description": "List of mock routes and their configured responses."
+    },
+    "dynamic": {
+      "type": "boolean",
+      "description": "Whether the mock generates responses dynamically from the spec schema."
+    },
+    "proxy_enabled": {
+      "type": "boolean",
+      "description": "Whether the mock can proxy to a real backend when available."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the mock was created."
+    }
+  },
+  "required": ["id", "name", "base_url"],
+  "$defs": {
+    "MockRoute": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+          "description": "HTTP method for this route."
+        },
+        "path": {
+          "type": "string",
+          "description": "URL path pattern for this route."
+        },
+        "status_code": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599,
+          "description": "HTTP status code returned by this mock route."
+        },
+        "response_body": {
+          "description": "Fixed response body for this mock route."
+        },
+        "content_type": {
+          "type": "string",
+          "description": "Content-Type of the mock response."
+        }
+      },
+      "required": ["method", "path", "status_code"]
+    }
+  }
+}

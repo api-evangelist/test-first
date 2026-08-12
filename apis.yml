@@ -97,6 +97,9 @@ apis:
       - type: GitHubRepository
         url: https://github.com/apiaryio/dredd
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/cucumber/cucumber-js/blob/main/LICENSE
   - type: DomainSecurity
     url: security/test-first-domain-security.yml
   - type: Documentation

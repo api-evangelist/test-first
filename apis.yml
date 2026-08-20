@@ -76,6 +76,11 @@ apis:
     tags:
       - API Mocking
       - Contract Testing
+      - Open-Source
+      - Test-First
+    tags_raw:
+      - API Mocking
+      - Contract Testing
       - Open Source
       - Test-First
     properties:

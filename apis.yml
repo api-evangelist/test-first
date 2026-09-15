@@ -25,6 +25,11 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/test-first.png
 name: Test First
+# x-type: concept -- a software-testing CONCEPT, not a company (roadmap#362). Same class as
+# devops/mvc/waterfall/sdlc, which roadmap#258 already typed; this family was missed because
+# the sweep went by name and these read as products. Found via #258's own tell instead: the
+# website is a Wikipedia entry, which a record has when it has no homepage.
+x-type: concept
 description: A software development approach where tests are written before the implementation code, ensuring code quality and driving design decisions through test requirements. Test-first development is the foundational principle behind test-driven development (TDD) and behavior-driven development (BDD), where the specification of expected behavior is captured in executable tests before any production code is written.
 url: https://en.wikipedia.org/wiki/Test-driven_development
 tags:

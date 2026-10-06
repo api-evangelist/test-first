@@ -41,7 +41,7 @@ tags:
   - Software Development
   - Testing
 created: '2025'
-modified: '2026-05-03'
+modified: '2026-10-06'
 apis:
   - name: Cucumber API
     description: REST API and tooling for Cucumber BDD framework supporting test-first development with Gherkin feature files, scenario definitions, and step implementations.
@@ -122,6 +122,10 @@ apis:
       - type: GitHubRepository
         url: https://github.com/apiaryio/dredd
 common:
+  - url: https://cucumber.io/blog/
+    type: Blog
+  - url: https://cucumber.io/blog/rss.xml
+    type: BlogRSS
   - type: IssueTracker
     url: https://github.com/cucumber/cucumber-js/issues
   - type: Releases
